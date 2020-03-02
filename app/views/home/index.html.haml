@@ -2,7 +2,11 @@
   %h1 Sing Song
   .aaa
     %a 投稿作品
-    = link_to "新規登録/ログイン", new_user_registration_path, class: "bbb"
+    - if user_signed_in?
+      = link_to "ログアウト", destroy_user_session_path, class: "bbb"
+    - else
+      = link_to "ログイン", new_user_session_path, class: "bbb"
+      = link_to "新規登録", new_user_registration_path, class: "bbb"
 .image
 .body
   %a 音楽
